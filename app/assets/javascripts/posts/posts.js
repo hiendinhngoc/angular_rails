@@ -1,5 +1,4 @@
-angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
-.config([
+angular.module('flapperNews')
 .factory('posts', [ 
 	'$http',
 	function(){
@@ -20,10 +19,10 @@ angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
 	};
 
 	o.upvote = function(post){
-		return $http.put('/posts/' + post.id + '/upvote.json')
+		return $http.put('/posts/' + post.id + '/upvote.json'
 		.success(function(data){
 			post.upvotes += 1;
-		});
+		}));
 	};
 
 	o.get = function(id){
@@ -31,13 +30,7 @@ angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
 			return res.data;
 		});
 	};
-
-	resole: {
-		post: ['$stateParams', 'posts', function($stateParams, posts){
-			return posts.get($stateParams.id);
-		}];
-	};
-
+	
 	o.addComment = function(id, comment){
 		return $http.post('/posts/' + id + '/comments.json', comment);
 	};
@@ -48,4 +41,5 @@ angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
 			comment.upvotes += 1;
 		});
 	};
-}])]);
+	return o;
+}]);

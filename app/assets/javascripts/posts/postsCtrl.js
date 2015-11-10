@@ -1,15 +1,20 @@
-angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
-.config.([
+angular.module('flapperNews')
 .controller('PostCtrl', [
 	'$scope',
 	'posts',
-	'post'
+	'post',
 	function($scope, $stateParams, posts){
 		$scope.post = post;
 
+		resole: {
+			post: ['$stateParams', 'posts', function($stateParams, posts){
+				return posts.get($stateParams.id);
+			}];
+		};
+
 		$scope.addComment = function(){
 			if ($scope.body === '') {return;}
-			posts.addComment(post, id, {
+			posts.addComment(post.id, {
 				body: $scope.body,
 				author: 'user',
 			}).success(function(comment){
@@ -21,4 +26,4 @@ angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
 		$scope.incrementUpvotes = function(comment){
 			posts.upvoteComment(post, comment);
 		};
-}])]);
+}]);
