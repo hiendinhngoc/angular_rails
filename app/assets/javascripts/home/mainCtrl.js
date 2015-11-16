@@ -16,7 +16,7 @@ angular.module('flapperNews')
 		posts.create({
 			title: $scope.title,
 			link: $scope.link,
-			upvotes: 0,
+			upvotes: 0
 		});
 		$scope.title = '';
 		$scope.link = '';
