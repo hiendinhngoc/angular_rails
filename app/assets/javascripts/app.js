@@ -8,11 +8,11 @@ angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
 				url: '/home',
 				templateUrl: 'home/home.html',
 				controller: 'MainCtrl',
-				resolve: {
-					postPromise: ['posts', function(posts){
-						return posts.getAll();
-					}]
-				}
+				//resolve: {
+				//	postPromise: ['posts', function(posts){
+				//		return posts.getAll();
+				//	}]
+				//}
 			})
 			.state('posts', {
 				url: '/posts/{id}',
