@@ -1,7 +1,7 @@
-group :assets do
+//= require jquery
 //= require angular
-//= require angular-devise
 //= require angular-rails-templates
 //= require angular-ui-router
+//= require angular-devise
 //= require_tree .
-end
+//= require_tree ../templates
